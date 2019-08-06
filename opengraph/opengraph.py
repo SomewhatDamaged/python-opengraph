@@ -47,7 +47,8 @@ class OpenGraph(object):
 
         for og in ogs:
             if og.has_attr('content'):
-                if og['property'][3:] + '_list' not in self.__data__:
-                    self.__data__[og['property'][3:] + '_list'] = []
-                self.__data__[og['property'][3:] + '_list'].append(og['content'])
+                if og['property'][3:].lower() == 'image':
+                    if og['property'][3:] + '_list' not in self.__data__:
+                        self.__data__[og['property'][3:] + '_list'] = []
+                    self.__data__[og['property'][3:] + '_list'].append(og['content'])
                 self.__data__[og['property'][3:]] = og['content']
