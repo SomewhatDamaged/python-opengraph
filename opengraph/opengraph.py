@@ -26,6 +26,12 @@ class OpenGraph(object):
         raise AttributeError(
             'Open Graph object has no attribute "{}"'.format(name))
 
+    def __setattr__(self, name, item):
+        if name in self.__data__:
+            return self.__data__[name] = item
+        raise AttributeError(
+            'Open Graph object has no attribute "{}"'.format(name))
+        
     def __repr__(self):
         return self.__data__.__str__()
 
